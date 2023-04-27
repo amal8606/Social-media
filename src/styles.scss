@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer component{
+    .navBar{
+        @apply text-blue-500 hover:text-blue-700 font-medium text-xl mb-4
+    }
+}

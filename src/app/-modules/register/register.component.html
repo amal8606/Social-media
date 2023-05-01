@@ -1,0 +1,92 @@
+<section
+  class="bg-white/80 h-screen top-0 bottom-0 left-0 right-0 fixed flex justify-center items-start overflow-auto"
+>
+  <div class="bg-white w-[440px] p-4 mt-24 shadow-lg">
+    <div class="flex justify-between border-b-2 p-2 mb-3">
+      <div>
+        <h2 class="text-3xl font-bold">Sign Up</h2>
+        <p class="text-sm text-gray-400">it's quick and easy.</p>
+      </div>
+
+      <a routerLink="../"><i class="fa-solid fa-xmark fa-lg"></i></a>
+    </div>
+    <div>
+      <form
+        action="
+        "
+      >
+        <div class="grid grid-cols-2 gap-2 mb-3">
+          <input
+            placeholder="First name"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md focus:border-blue-500"
+            type="text"
+          />
+          <input
+            placeholder="Surname"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+            type="text"
+          />
+        </div>
+        <div>
+          <input
+            placeholder="Mobile number or email address"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+            type="text"
+          />
+        </div>
+        <div>
+          <input
+            placeholder="New password"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+            type="text"
+          />
+        </div>
+      </form>
+    </div>
+    <label class="text-sm text-gray-400" for="">Date of birth</label>
+    <div class="grid grid-cols-3 gap-2 mb-3">
+      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let date of dates" value="date">{{ date }}</option>
+      </select>
+      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let month of months" value="month">{{ month }}</option>
+      </select>
+      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let year of options" value="year">{{ year }}</option>
+      </select>
+    </div>
+    <label class="text-sm text-gray-400" for="">Gender</label>
+    <div class="grid grid-cols-3 gap-2 mb-3">
+      <div class="border p-2 rounded-mdb flex justify-between">
+        <label for="female">Female</label>
+        <input type="radio" value="Female" id="female" name="dob" />
+      </div>
+      <div class="border p-2 rounded-md flex justify-between">
+        <label for="male">Male</label>
+        <input type="radio" name="dob" value="Female" id="male" />
+      </div>
+      <div class="border p-2 rounded-md flex justify-between">
+        <label for="custom">Custom</label>
+        <input name="dob" type="radio" id="custom"/>
+      </div>
+    </div>
+    <div class="text-sm text-blue-70 mt-4 text-slate-400">
+      <p>
+        People who use our service may have uploaded your contact information to
+        Facebook. Learn more.
+      </p>
+      <p class="mt-3">
+        By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies
+        Policy. You may receive SMS notifications from us and can opt out at any
+        time.
+      </p>
+    </div>
+    <div class="mt-4 mb-4 text-center">
+      <button
+        class="bg-green-500 text-white text-lg py-2 font-semibold rounded-lg px-16"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</section>

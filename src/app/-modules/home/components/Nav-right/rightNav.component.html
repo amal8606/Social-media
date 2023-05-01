@@ -1,0 +1,57 @@
+<div>
+    <div class="flex m-4 border-b-red-500 shadow-lg shadow-blue-300 p-3 justify-between">
+      <div class="flex justify-center">
+      <div class="w-12 h-12 rounded-full overflow-hidden">
+        <img
+          src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+          alt="profile photo loading...."
+        />
+      </div>
+
+      <p class="text-md text-black font-bold m-3">Amal Abraham</p>
+    </div>
+      <button class="right-0"><i class="fa-solid fa-bars fa-lg"></i></button>
+    </div>
+    <div class="flex justify-between p-3">
+      <p class="font-bold">friends</p>
+      <button *ngIf="!searchFriend" (click)="searchFriend = true">
+        <i class="fa-solid fa-magnifying-glass text-blue-500"></i>
+      </button>
+
+      <div *ngIf="searchFriend">
+        <input 
+        placeholder="search...."
+        class="border-blue-500 border-2 rounded-lg p-1" type="text" />
+        <button 
+        (click)="searchFriend=false"
+        class="-ml-5 text-blue-500">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+    <ul>
+      <li *ngFor="let user of data">
+        <div class="flex justify-between">
+          <div class="flex">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+              <img src="{{ user.profile_pic }}" alt="profile photo" />
+            </div>
+            <p class="text-md text-black font-bold m-3">{{ user.name }}</p>
+          </div>
+
+          <button class="ml-10">
+            <i class="fa-regular hover:fa-solid fa-comments text-blue-500 hover:text-green-500"></i>
+          </button>
+          <div
+            [ngClass]="{
+              'text-red-500': user.active == false,
+              'text-green-500': user.active == true
+            }"
+            class="m-4"
+          >
+            <i class="fa-solid fa-circle"></i>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>

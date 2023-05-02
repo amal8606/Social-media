@@ -53,5 +53,6 @@ public currentYear!:number;
     for (let date = 1; date <= 31; date++) {
       this.dates.push(date);
     }
+    
   }
 }

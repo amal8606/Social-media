@@ -1,0 +1,38 @@
+<div class="bg-white rounded-lg p-3 mb-4">
+    <p class="text-lg font-semibold">What's on your mind? Tom</p>
+    <div class="flex justify-between">
+      <p class="text-gray-400">Sharing options</p>
+      <button><i class="fa-solid fa-images fa-lg text-blue-500"></i></button>
+    </div>
+  </div>
+  <h2 class="text-xl font-bold">Posts</h2>
+  <div *ngFor="let user of data" class="bg-white p-4 mt-3 rounded-md mb-3">
+    <div class="flex justify-between">
+      <div class="flex">
+        <div class="w-12 h-12 rounded-full overflow-hidden">
+          <img src="{{ user.profile_pic }}" alt="profile photo" />
+        </div>
+        <div class="ml-3">
+          <p class="text-md text-black font-bold">{{ user.name }}</p>
+          <p class="text-sm text-gray-400">
+            {{ getTime(user.posts[0].post_time) }}
+          </p>
+        </div>
+      </div>
+      <button><i class="fa-solid fa-ellipsis"></i></button>
+    </div>
+    <div class="w-full h-[600px] overflow-hidden mt-5 mb-3">
+      <img src="{{ user.posts[0].post_link }}" alt="post loading..." />
+    </div>
+    <p>
+      {{ user.posts[0].caption }}
+    </p>
+    <div class="mt-3 flex">
+      <button class="bg-gray-100 p-2 rounded-xl">
+        <i class="fa-regular fa-thumbs-up text-blue-500 mr-2"></i> Like
+      </button>
+      <button class="ml-4 bg-gray-100 p-2 rounded-xl">
+        <i class="fa-regular fa-comment text-blue-500 mr-2"></i> comment
+      </button>
+    </div>
+  </div>

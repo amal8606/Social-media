@@ -1,0 +1,21 @@
+<section class="bg-white p-3 ">
+    <h2 class="text-xl font-bold">Friends</h2>
+    <p>400 friends</p>
+    <hr class="mt-4">
+    <div class="grid grid-cols-2 mt-5 gap-5 ">
+
+   
+    <div *ngFor="let friend of friends" >
+        <div class="border-2 shadow-lg text-center p-5 hover:-translate-y-0.5 hover:shadow-blue-400">
+            <div class="">
+                <img class="w-[300px] rounded-md" src="{{friend.profile_pic}}" alt="">
+            
+            </div>
+            <p class="text-xl font-semibold mt-3 text-blue-500">{{friend.name}}</p>
+        </div>
+
+
+    </div>
+</div>
+
+</section>

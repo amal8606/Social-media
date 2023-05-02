@@ -10,64 +10,127 @@
 
       <a routerLink="../"><i class="fa-solid fa-xmark fa-lg"></i></a>
     </div>
+    <form
+    [formGroup]="registerForm"
+      action="
+      "
+    >
     <div>
-      <form
-        action="
-        "
-      >
+     
         <div class="grid grid-cols-2 gap-2 mb-3">
+          <div class="flex">
+
           <input
+          formControlName="firstName"
+          [ngClass]="{' border-red-600':registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched}"
+
             placeholder="First name"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md focus:border-blue-500"
             type="text"
           />
+          <button
+          (click)="showWarning('first Name')"
+          class="-ml-6 -mt-3"
+          >
+            <i 
+            *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched"
+            class="fa-solid fa-circle-info  text-red-600"></i>
+          </button>
+        
+        </div>
+<div class="flex">
           <input
+          formControlName="lastName"
             placeholder="Surname"
+            [ngClass]="{' border-red-600':registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched}"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
             type="text"
           />
+          <button
+          (click)="showWarning('Last Name')"
+          class="-ml-6 -mt-3">
+          <i 
+          *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched"
+
+          class="fa-solid fa-circle-info text-red-600"></i>
+        </button>
+        </div>
         </div>
         <div>
           <input
+          formControlName="email"
+          [ngClass]="{' border-red-600':registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched}"
+
             placeholder="Mobile number or email address"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
             type="text"
           />
+          <button
+          (click)="showWarning('email')"
+          class="-ml-6 -mt-3">
+          <i 
+          *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched"
+
+          class="fa-solid fa-circle-info text-red-600"></i>
+</button>
         </div>
         <div>
           <input
+          formControlName="password"
+          [ngClass]="{' border-red-600':registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched}"
+
             placeholder="New password"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
             type="text"
           />
+          <button
+          (click)="showWarning('password')"
+          class="-ml-6 -mt-3">
+          <i 
+          *ngIf="registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched"
+
+          class="fa-solid fa-circle-info  text-red-600"></i>
+          </button>
         </div>
-      </form>
     </div>
     <label class="text-sm text-gray-400" for="">Date of birth</label>
     <div class="grid grid-cols-3 gap-2 mb-3">
-      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
-        <option *ngFor="let date of dates" value="date">{{ date }}</option>
+      <select 
+      
+      class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let date of dates" >{{ date }}</option>
       </select>
-      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
-        <option *ngFor="let month of months" value="month">{{ month }}</option>
+      <select 
+      
+      class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let month of months" >{{ month }}</option>
       </select>
-      <select class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
-        <option *ngFor="let year of options" value="year">{{ year }}</option>
+      <select 
+      
+      class="border-2 w-full p-3 mb-4 rounded-md" name="" id="">
+        <option *ngFor="let year of options" >{{ year }}</option>
       </select>
     </div>
     <label class="text-sm text-gray-400" for="">Gender</label>
     <div class="grid grid-cols-3 gap-2 mb-3">
       <div class="border p-2 rounded-mdb flex justify-between">
         <label for="female">Female</label>
-        <input type="radio" value="Female" id="female" name="dob" />
+        <input 
+        formControlName="gender"
+        type="radio" value="Female" id="female" name="gender" />
       </div>
       <div class="border p-2 rounded-md flex justify-between">
         <label for="male">Male</label>
-        <input type="radio" name="dob" value="Female" id="male" />
+        <input 
+        formControlName="gender"
+        type="radio" name="gender" value="male" id="male" />
       </div>
       <div class="border p-2 rounded-md flex justify-between">
         <label for="custom">Custom</label>
-        <input name="dob" type="radio" id="custom"/>
+        <input
+        formControlName="gender"
+value="custom"
+         name="gender" type="radio" id="custom"/>
       </div>
     </div>
     <div class="text-sm text-blue-70 mt-4 text-slate-400">
@@ -83,10 +146,13 @@
     </div>
     <div class="mt-4 mb-4 text-center">
       <button
-        class="bg-green-500 text-white text-lg py-2 font-semibold rounded-lg px-16"
+      [disabled]="!registerForm.valid"
+      (click)="submit()"
+        class="bg-green-500 text-white text-lg py-2 font-semibold rounded-lg px-16 disabled:cursor-not-allowed disabled:bg-green-300"
       >
         Sign Up
       </button>
     </div>
+  </form>
   </div>
 </section>

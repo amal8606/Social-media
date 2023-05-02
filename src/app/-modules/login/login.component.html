@@ -1,5 +1,6 @@
-
-<section class="grid grid-cols-2 bg-gray-200 h-screen overflow-hidden items-start">
+<section
+  class="grid grid-cols-2 bg-gray-200 h-screen overflow-hidden items-start sm:grid"
+>
   <div class="h-screen text-3xl mx-auto mt-60 mr-20">
     <img
       class="h-[106px]"
@@ -11,44 +12,78 @@
       with the people in your life.
     </p>
   </div>
-  <div class="max-w-[432px] bg-white shadow-lg shadow-blue-500 rounded-lg p-4 mt-48 ml-3">
-    <div class=" w-full border-b-2">
-      <form action="">
+  <div
+    class="max-w-[432px] bg-white shadow-xl hover:shadow-blue-500 rounded-lg p-4 mt-48 ml-3 hover:translate-y-1 duration-300"
+  >
+    <div class="w-full border-b-2">
+      <form action="" [formGroup]="loginForm">
         <div>
           <input
+            [ngClass]="{' border-red-600':loginForm.controls['email'].errors?.['required'] && loginForm.controls['email'].touched}"
+            formControlName="email"
             class="border-2 w-full p-3 mb-4 rounded-md"
             placeholder="Email or phone number"
             type="email/number"
           />
+          <button 
+          (click)="emailRequired=true"
+          class="-ml-6">
+            <i
+              *ngIf="this.loginForm.controls['email'].errors?.['required'] && loginForm.controls['email'].touched"
+              class="fa-solid fa-circle-info text-red-600"
+            ></i>
+          </button>
+
+          <p
+            *ngIf="this.loginForm.controls['email'].errors?.['required'] && loginForm.controls['email'].touched && emailRequired"
+            class="text-red-600 mb-2"
+          >
+            email or phone required
+          </p>
         </div>
         <div>
-          <input 
-          placeholder="Password"
-          class="border-2 w-full p-3 mb-4 rounded-md focus:border-2 focus:border-blue-500" type="password" />
+          <input
+            [ngClass]="{' border-red-600':loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].touched}"
+            formControlName="password"
+            placeholder="Password"
+            class="border-2 w-full p-3 mb-4 rounded-md focus:border-2 focus:border-blue-500"
+            type="password"
+          />
+          <button (click)="passwordRequired = true" class="-ml-6">
+            <i
+              *ngIf="this.loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].touched"
+              class="fa-solid fa-circle-info text-red-600"
+            ></i>
+          </button>
+
+          <p
+            *ngIf="this.loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].touched && passwordRequired"
+            class="text-red-600"
+          >
+            password required
+          </p>
         </div>
         <div class="mb-4 mt-4 pl-3">
-          <a
-          routerLink="/home"
-            class="bg-blue-500 text-white text-lg p-3 font-semibold rounded-lg px-40"
+          <button
+            [disabled]="!loginForm.valid"
+            routerLink="/home"
+            class="bg-blue-500 text-white text-lg p-3 font-semibold rounded-lg px-40 disabled:cursor-not-allowed disabled:bg-blue-400"
           >
             Log In
-        </a>
+          </button>
         </div>
-       
       </form>
       <div class="text-center mb-4">
-        <a
-        class="text-blue-400 hover:underline" 
-        href="">forgotten password?</a>
+        <a class="text-blue-500 hover:underline" href="">forgotten password?</a>
       </div>
-      
     </div>
     <div class="mt-5 mb-4 text-center">
-        <a
+      <a
         routerLink="/login/register"
-        class="bg-green-500 text-white text-lg p-3 font-semibold rounded-lg" 
-        >Create new account</a>
-      </div>
+        class="bg-green-500 text-white text-lg p-3 font-semibold rounded-lg hover:bg-green-600"
+        >Create new account</a
+      >
+    </div>
   </div>
 </section>
 <router-outlet></router-outlet>

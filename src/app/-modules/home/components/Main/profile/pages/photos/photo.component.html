@@ -1,7 +1,11 @@
 
 
-<div class="grid grid-cols-3 gap-3 p-3">
-<div class="mb-3 h-96 bg-red-300 col-span-1" *ngFor="let img of images">
-<img class="h-full w-full" src="{{img.url}}" alt="">
+<div class="grid grid-cols-3 gap-3 p-3 m-4">
+<div class="mb-3 h-96 bg-red-300 col-span-1 hover:shadow-red-500 shadow-lg" *ngFor="let img of images">
+    <a href="https://api-sales-app.josetovar.dev/pictures/{{img.picture}}">
+        <img
+        class="h-full w-full" src="https://api-sales-app.josetovar.dev/pictures/{{img.picture}}" alt="">
+    </a>
+
 </div>
 </div>

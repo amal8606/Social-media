@@ -12,6 +12,9 @@ export class profileServices{
     public getProfile(username:string):Observable<any>{
         return this.http.get(`${this.url}/${username}`)
     }
+    public getProfilebyLogin():Observable<any>{
+        return this.http.get(this.url)
+    }
     public postPic(file:File):Observable<any>{
         const formData:FormData=new FormData();
         formData.append('file',file,file.name);

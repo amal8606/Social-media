@@ -12,4 +12,7 @@ export class postServices{
     public newPost(data:any):Observable<any>{
         return this.http.post(`${this.url}`,data)
     }
+    public getPost(username:any):Observable<any>{
+        return this.http.get(`${this.url}/${username}`)
+    }
 }

@@ -14,6 +14,8 @@ import { createPostComponent } from './-modules/home/components/Main/feeds/pages
 import { GuardInterceptor } from './-core/interceptor/token.interceptor';
 import { GetFunctionService } from './-core/services/subjects/subject.service';
 import { postServices } from './-core/http/post.service';
+import { AuthService } from './-core/services/auth.service';
+import { loginQuard } from './-core/quards/login.guard';
 
 @NgModule({
   declarations: [AppComponent,createPostComponent],
@@ -34,7 +36,9 @@ import { postServices } from './-core/http/post.service';
     profileServices,
     postServices,
     { provide: HTTP_INTERCEPTORS, useClass: GuardInterceptor, multi: true },
-    GetFunctionService
+    GetFunctionService,
+    AuthService,
+    loginQuard
   ],
   bootstrap: [AppComponent],
 })

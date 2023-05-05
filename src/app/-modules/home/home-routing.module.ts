@@ -7,22 +7,26 @@ import { aboutComponent } from './components/Main/profile/pages/about/about.comp
 import { friendsComponent } from './components/Main/profile/pages/friends/friends.component';
 import { photoComponent } from './components/Main/profile/pages/photos/photo.component';
 import { createPostComponent } from './components/Main/feeds/pages/createPost.component';
+import { timeLineComponent } from './components/Main/profile/pages/timeline/timeLine.component';
+import { loginQuard } from 'src/app/-core/quards/login.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivateChild:[loginQuard],
     children: [
       {
         path: 'profile',
-        component: profileComponent,
+        component: profileComponent,canActivateChild:[loginQuard],
         children: [
+          {path:'timeline/:username',component:timeLineComponent},
           {path:'new',component:createPostComponent},
           { path: 'about', component: aboutComponent },
           { path: '', redirectTo: 'about', pathMatch: 'full' },
           { path: 'friends', component: friendsComponent },
-          {path:'photos',component:photoComponent}
+          {path:'photos/:username',component:photoComponent}
         ],
       },
       {path: '', redirectTo: 'feeds', pathMatch: 'full' },

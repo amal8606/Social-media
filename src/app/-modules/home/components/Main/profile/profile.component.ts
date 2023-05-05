@@ -22,7 +22,7 @@ this.getData()
   
   }
   public getData(){
-    this.profileService.getProfile('david123').subscribe({
+    this.profileService.getProfilebyLogin().subscribe({
       next: (res) => {
         this.userData = res;
         this.propic = `https://api-sales-app.josetovar.dev/pictures/${res.picture}`;

@@ -1,4 +1,4 @@
-<section class="border-2 shadow-md">
+<section class="border-2 shadow-md grid">
   <div class="bg-red-300 h-96 w-full">
     <img
       class="h-full w-full"
@@ -8,7 +8,7 @@
   </div>
   <div class="flex justify-between -mt-14">
     <div class="flex justify-center">
-      <div class="w-36 h-36 rounded-full overflow-hidden ml-3">
+      <div class="w-44 h-44 rounded-full overflow-hidden ml-3 z-20 border-2">
         <img
           class="w-full h-full"
           [src]="propic"
@@ -16,8 +16,8 @@
         />
       </div>
 
-      <button (click)="addPost()" title="edit" class="-ml-8 mt-16">
-        <i class="fa-solid fa-camera fa-2xl text-blue-500"></i>
+      <button (click)="addPost()" title="edit" class="-ml-8 mt-16 z-20">
+        <i class="fa-solid fa-camera fa-2xl text-blue-500 hover:text-green-400"></i>
       </button>
 
       <p class="text-2xl text-white font-serif m-3">
@@ -32,9 +32,12 @@
       </button>
     </div>
   </div>
-  <div class="flex justify-between -mt-24 bg-white">
-    <div class="flex gap-4 text-lg font-semibold text-blue-300 ml-36 mt-4">
-      <a class="border-4 border-transparent hover:border-b-blue-500 p-6"
+  <div class="-mt-28 bg-white overflow-y-auto pl-10 relative">
+    <div class="flex justify-between text-lg font-semibold text-blue-300 mt-4 ml-36">
+      <a
+        routerLink="timeline/{{userData.username}}"
+        routerLinkActive="border-b-blue-500 text-blue-700"
+        class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Timeline</a
       >
       <a
@@ -50,29 +53,25 @@
         >friends</a
       >
       <a
-        routerLink="photos"
+        routerLink="photos/{{userData.username}}"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Photos</a
       >
+      <button
+        (click)="showUpdates = true"
+        title="edit profile"
+        class="text-blue-500 mr-3"
+      >
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </button>
     </div>
 
-    <button
-    (click)="showUpdates=true" 
-    title="edit profile"
-    class="mr-6 text-blue-500">
-      <i class="fa-solid fa-ellipsis fa-lg"></i>
-    </button>
-    <div *ngIf="showUpdates" 
-    >
-    <app-udpateProfile
-    (closeEvent)="closeChild()"
-    ></app-udpateProfile>
-</div>
+    <div *ngIf="showUpdates">
+      <app-udpateProfile (closeEvent)="closeChild()"></app-udpateProfile>
+    </div>
   </div>
 </section>
 <section class="mt-6">
-  <router-outlet
-  
-  ></router-outlet>
+  <router-outlet></router-outlet>
 </section>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular
 import { FormControl, FormGroup } from '@angular/forms';
 import { profileServices } from 'src/app/-core/http/profile.services';
 import { GetFunctionService } from 'src/app/-core/services/subjects/subject.service';
+import { toastrService } from 'src/app/-core/services/toastr.services';
 
 @Component({
   selector: 'app-udpateProfile',
@@ -10,7 +11,8 @@ import { GetFunctionService } from 'src/app/-core/services/subjects/subject.serv
 export class updateProfileComponent implements OnInit {
   constructor(private readonly api: profileServices,
     @Inject(GetFunctionService)
-    private readonly getFunction:GetFunctionService) {}
+    private readonly getFunction:GetFunctionService,
+    private readonly toastr:toastrService) {}
   public updateProfile: boolean = false;
 
   public updateForm: FormGroup = new FormGroup({
@@ -27,7 +29,7 @@ export class updateProfileComponent implements OnInit {
 this.closeEvent.emit();
   }
   ngOnInit(): void {
-    this.api.getProfile('david123').subscribe({
+    this.api.getProfilebyLogin().subscribe({
       next: (res) => {
         this.updateForm.setValue(res);
       },
@@ -40,7 +42,9 @@ this.closeEvent.emit();
       next: (res) => {
         console.log(res);
         this.getFunction.sendClickEvent()
+        this.toastr.showSuccess('profile updated successfully')
         this.close()
+    
       },
       error: () => {},
     });

@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GuardInterceptor,  } from 'src/app/-core/interceptor/token.interceptor';
 import { updateProfileComponent } from './components/Main/profile/pages/update_profile/updateProfile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { timeLineComponent } from './components/Main/profile/pages/timeline/timeLine.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     aboutComponent,
     friendsComponent,
     photoComponent,
-    updateProfileComponent
+    updateProfileComponent,
+    timeLineComponent
    
   ],
   imports: [

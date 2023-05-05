@@ -3,12 +3,12 @@
       <div class="flex justify-center">
       <div class="w-12 h-12 rounded-full overflow-hidden">
         <img
-          src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+          src="https://api-sales-app.josetovar.dev/pictures/{{userData.picture}}"
           alt="profile photo loading...."
         />
       </div>
 
-      <p class="text-md text-black font-bold m-3">Tom David</p>
+      <p class="text-md text-black font-bold m-3">{{userData.first_name}} {{userData.last_name}}</p>
     </div>
       <button class="right-0"><i class="fa-solid fa-bars fa-lg"></i></button>
     </div>

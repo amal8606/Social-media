@@ -1,0 +1,74 @@
+
+<section
+
+  class="h-screen bg-white/80 top-0 bottom-0 right-0 left-0 fixed justify-center flex"
+>
+  <div class="bg-white w-[80rem] mt-24 shadow-lg h-[50%] p-8">
+    <form
+      [formGroup]="updateForm"
+      action="
+      "
+    >
+      <div>
+        <div class="grid grid-cols-2 gap-2 mb-3">
+          <div>
+            <label for="">First Name</label>
+            <input
+              formControlName="first_name"
+              placeholder="First name"
+              class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md focus:border-blue-500"
+              type="text"
+            />
+          </div>
+          <div>
+            <label for="">Last Name</label>
+
+            <input
+              formControlName="last_name"
+              placeholder="Surname"
+              class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+              type="text"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="">User Name</label>
+
+          <input
+            formControlName="username"
+            placeholder="User Name"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+            type="text"
+          />
+        </div>
+
+        <div>
+          <label for="">About you</label>
+
+          <input
+            formControlName="about"
+            placeholder="Tell something about you......"
+            class="bg-blue-50 border-2 w-full p-6 mb-4 rounded-md"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <div class="mt-4 mb-4 text-center">
+
+        <button
+          (click)="update()"
+          class="bg-green-500 text-white text-lg py-2 font-semibold rounded-lg px-16 disabled:cursor-not-allowed disabled:bg-green-300"
+        >
+          Update Profile
+        </button>
+      </div>
+    </form>
+  </div>
+  <button
+    (click)="close()"
+    class="bg-blue-500 rounded-full p-2 h-10 mt-20 -ml-4 text-white hover:bg-red-500"
+  >
+    <i class="fa-solid fa-xmark fa-2xl"></i>
+  </button>
+</section>

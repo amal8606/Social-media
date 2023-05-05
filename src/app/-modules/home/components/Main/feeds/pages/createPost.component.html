@@ -1,0 +1,44 @@
+<section class="h-screen top-0 bottom-0 left-0 right-0 bg-white/30 fixed flex justify-center ">
+    <div class="bg-white w-[50rem] max-h-[45rem] shadow-lg border-2 mt-28 grid justify-center overflow-y-auto ">
+        <div 
+        class="border p-3 shadow-md border-blue-400 mt-2 rounded-lg shadow-blue-500"
+        *ngIf="!showImg">
+
+        <div class="mt-10">
+            <label for="upload"><i class="fa-solid fa-file-arrow-up text-[100px] text-blue-500 m-24"></i></label>
+        </div>
+        <div class="mt-3">
+            <input
+            #file
+       
+
+            (change)="onFileSelected($event)"
+             type="file" id="upload">
+        </div>
+    </div>
+<div *ngIf="showImg">
+    <div>
+        <img
+        class="w-full h-[350px] border mt-3"
+         src="{{imgPrev}}" alt="">
+    </div>
+    <textarea 
+    #content
+    class="border-2 m-3 p-2 shadow-lg w-full"
+    name="" id="" cols="30" rows="5" placeholder="say something about this photo...."></textarea>
+</div>
+       
+        <div
+       
+        class="grid grid-cols-2  items-end gap-4 mb-4">
+            <button
+            (click)="createPost()"
+             class="bg-green-500 text-white p-3 rounded-md border-2 shadow-lg">post</button>
+            <a 
+            routerLink="../"
+            class="bg-red-500 text-white p-3 rounded-md border-2 shadow-lg">cancel</a>
+
+        </div>
+
+    </div>
+</section>

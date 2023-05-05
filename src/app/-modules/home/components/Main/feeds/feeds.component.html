@@ -2,7 +2,9 @@
     <p class="text-lg font-semibold">What's on your mind? Tom</p>
     <div class="flex justify-between">
       <p class="text-gray-400">Sharing options</p>
-      <button><i class="fa-solid fa-images fa-lg text-blue-500"></i></button>
+      <a
+      (click)="addPost()"
+      ><i class="fa-solid fa-images fa-lg text-blue-500"></i></a>
     </div>
   </div>
   <h2 class="text-xl font-bold">Posts</h2>
@@ -36,3 +38,4 @@
       </button>
     </div>
   </div>
+  <router-outlet></router-outlet>

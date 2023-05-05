@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { userServices } from 'src/app/-core/services/user.service';
 @Component({
     selector:'app-feeds',
     templateUrl:'./feeds.component.html'
 })
 export class feedsComponent{
-    constructor(private readonly userService:userServices){}
+    constructor(private readonly userService:userServices,
+      private readonly router:Router){}
    
     public data:any[]=this.userService.users
     getTime(postCreatedAt: string): string {
@@ -27,5 +29,8 @@ export class feedsComponent{
       else{
         return `${Math.round(newTime/24)} days ago`
       }
+    }
+    public addPost(){
+this.router.navigate(['home/feeds/new'],{queryParams:{post:'new'}})
     }
 }

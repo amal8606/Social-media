@@ -1,22 +1,35 @@
 <section class="border-2 shadow-md">
   <div class="bg-red-300 h-96 w-full">
-    <img class="h-full w-full" src="https://container-news.com/wp-content/uploads/2021/04/Picture-1.jpg" alt="">
-    
+    <img
+      class="h-full w-full"
+      src="https://container-news.com/wp-content/uploads/2021/04/Picture-1.jpg"
+      alt=""
+    />
   </div>
   <div class="flex justify-between -mt-14">
     <div class="flex justify-center">
-      <div class="w-36 h-36 rounded-full overflow-hidden ml-3 ">
+      <div class="w-36 h-36 rounded-full overflow-hidden ml-3">
         <img
-          src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+          class="w-full h-full"
+          [src]="propic"
           alt="profile photo loading...."
         />
       </div>
 
-      <p class="text-2xl text-white font-serif m-3">Tom David</p>
+      <button (click)="addPost()" title="edit" class="-ml-8 mt-16">
+        <i class="fa-solid fa-camera fa-2xl text-blue-500"></i>
+      </button>
+
+      <p class="text-2xl text-white font-serif m-3">
+        {{ userData.first_name }} {{ userData.last_name }}
+      </p>
     </div>
     <div>
-      <button class="text-white mr-3 font-medium bg-gray-500/60 p-2 rounded-xl hover:border-b-green-500 border-2 hover:translate-x-1 border-transparent hover:border-l-red-500"><i class="fa-solid fa-file-image"></i> change Cover</button>
-
+      <button
+        class="text-white mr-3 font-medium bg-gray-500/60 p-2 rounded-xl hover:border-b-green-500 border-2 hover:translate-x-1 border-transparent hover:border-l-red-500"
+      >
+        <i class="fa-solid fa-file-image"></i> change Cover
+      </button>
     </div>
   </div>
   <div class="flex justify-between -mt-24 bg-white">
@@ -24,36 +37,42 @@
       <a class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Timeline</a
       >
-      <a 
-      routerLink="about"
-      
-      routerLinkActive="border-b-blue-500 text-blue-700"
-      class="border-4 border-transparent hover:border-b-blue-500 p-6"
+      <a
+        routerLink="about"
+        routerLinkActive="border-b-blue-500 text-blue-700"
+        class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >About</a
       >
       <a
-      routerLink="friends"
-      
-      routerLinkActive="border-b-blue-500 text-blue-700"
-       class="border-4 border-transparent hover:border-b-blue-500 p-6"
+        routerLink="friends"
+        routerLinkActive="border-b-blue-500 text-blue-700"
+        class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >friends</a
       >
-      <a 
-    
-      routerLink="photos"
-      
-      routerLinkActive="border-b-blue-500 text-blue-700"
-      class="border-4 border-transparent hover:border-b-blue-500 p-6"
+      <a
+        routerLink="photos"
+        routerLinkActive="border-b-blue-500 text-blue-700"
+        class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Photos</a
       >
     </div>
 
-    <button class="mr-6 text-blue-500">
+    <button
+    (click)="showUpdates=true" 
+    title="edit profile"
+    class="mr-6 text-blue-500">
       <i class="fa-solid fa-ellipsis fa-lg"></i>
     </button>
+    <div *ngIf="showUpdates" 
+    >
+    <app-udpateProfile
+    (closeEvent)="closeChild()"
+    ></app-udpateProfile>
+</div>
   </div>
 </section>
 <section class="mt-6">
-    <router-outlet></router-outlet>
-
+  <router-outlet
+  
+  ></router-outlet>
 </section>

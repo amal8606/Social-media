@@ -21,8 +21,8 @@
           <div class="flex">
 
           <input
-          formControlName="firstName"
-          [ngClass]="{' border-red-600':registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched}"
+          formControlName="first_name"
+          [ngClass]="{' border-red-600':registerForm.controls['first_name'].errors?.['required'] && registerForm.controls['first_name'].touched}"
 
             placeholder="First name"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md focus:border-blue-500"
@@ -33,16 +33,16 @@
           class="-ml-6 -mt-3"
           >
             <i 
-            *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched"
+            *ngIf="registerForm.controls['first_name'].errors?.['required'] && registerForm.controls['first_name'].touched"
             class="fa-solid fa-circle-info  text-red-600"></i>
           </button>
         
         </div>
 <div class="flex">
           <input
-          formControlName="lastName"
+          formControlName="last_name"
             placeholder="Surname"
-            [ngClass]="{' border-red-600':registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched}"
+            [ngClass]="{' border-red-600':registerForm.controls['last_name'].errors?.['required'] && registerForm.controls['last_name'].touched}"
             class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
             type="text"
           />
@@ -50,11 +50,29 @@
           (click)="showWarning('Last Name')"
           class="-ml-6 -mt-3">
           <i 
-          *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched"
+          *ngIf="registerForm.controls['last_name'].errors?.['required'] && registerForm.controls['last_name'].touched"
 
           class="fa-solid fa-circle-info text-red-600"></i>
         </button>
         </div>
+        </div>
+        <div>
+          <input
+          formControlName="username"
+          [ngClass]="{' border-red-600':registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched}"
+
+            placeholder="User Name"
+            class="bg-blue-50 border-2 w-full p-3 mb-4 rounded-md"
+            type="text"
+          />
+          <button
+          (click)="showWarning('username')"
+          class="-ml-6 -mt-3">
+          <i 
+          *ngIf="registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched"
+
+          class="fa-solid fa-circle-info text-red-600"></i>
+</button>
         </div>
         <div>
           <input
@@ -69,7 +87,7 @@
           (click)="showWarning('email')"
           class="-ml-6 -mt-3">
           <i 
-          *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched"
+          *ngIf="registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched"
 
           class="fa-solid fa-circle-info text-red-600"></i>
 </button>
@@ -96,19 +114,30 @@
     <label class="text-sm text-gray-400" for="">Date of birth</label>
     <div class="grid grid-cols-3 gap-2 mb-3">
       <select 
-      
+      #date
+        (change)="updateDob()"
+
       class="border-2 w-full p-3 mb-4 rounded-md" >
-        <option *ngFor="let date of dates" >{{ date }}</option>
+        <option 
+        [value]="date"
+        *ngFor="let date of dates"  >{{ date }}</option>
       </select>
       <select 
-      
+      (change)="updateDob()"
+      #month
       class="border-2 w-full p-3 mb-4 rounded-md" >
-        <option *ngFor="let month of months" >{{ month }}</option>
+        <option 
+        [value]="month"
+        *ngFor="let month of months">{{ month }}</option>
       </select>
       <select 
-      
+      (change)="updateDob()"
+      #year
       class="border-2 w-full p-3 mb-4 rounded-md" >
-        <option *ngFor="let year of options" >{{ year }}</option>
+        <option 
+        [value]="year"
+       
+        *ngFor="let year of options" >{{ year }}</option>
       </select>
     </div>
     <label class="text-sm text-gray-400" for="">Gender</label>

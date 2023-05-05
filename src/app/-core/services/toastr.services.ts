@@ -11,4 +11,11 @@ export class toastrService{
 this.toast.info(`${message} is required...`,'warning',{timeOut:3000,positionClass:'toast-top-center',closeButton:true,
 progressBar:true,})
     }
+    public showSuccess(message:string){
+        this.toast.success(message)
+    }
+    public showError(message:string){
+        this.toast.error(message)
+    }
+
 }

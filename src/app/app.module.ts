@@ -16,6 +16,7 @@ import { GetFunctionService } from './-core/services/subjects/subject.service';
 import { postServices } from './-core/http/post.service';
 import { AuthService } from './-core/services/auth.service';
 import { loginQuard } from './-core/quards/login.guard';
+import { loadCommentsService } from './-core/services/subjects/comments.subject';
 
 @NgModule({
   declarations: [AppComponent,createPostComponent],
@@ -38,7 +39,8 @@ import { loginQuard } from './-core/quards/login.guard';
     { provide: HTTP_INTERCEPTORS, useClass: GuardInterceptor, multi: true },
     GetFunctionService,
     AuthService,
-    loginQuard
+    loginQuard,
+    loadCommentsService
   ],
   bootstrap: [AppComponent],
 })

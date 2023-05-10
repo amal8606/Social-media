@@ -16,7 +16,9 @@
         />
       </div>
 
-      <button (click)="addPost()" title="edit" class="-ml-8 mt-16 z-20">
+      <button
+      [hidden]="showEdit"
+      (click)="addPost()" title="edit" class="-ml-8 mt-16 z-20">
         <i class="fa-solid fa-camera fa-2xl text-blue-500 hover:text-green-400"></i>
       </button>
 
@@ -59,6 +61,7 @@
         >Photos</a
       >
       <button
+      [hidden]="showEdit"
         (click)="showUpdates = true"
         title="edit profile"
         class="text-blue-500 mr-3"

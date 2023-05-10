@@ -1,0 +1,51 @@
+<div class="w-full h-96 bg-white p-5 rounded-lg grid">
+  <div class="right-0">
+    <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="h-60 overflow-y-auto">
+    <div 
+    *ngIf="comments.length==0"
+    class="text-center">
+        <p>No comments yet...</p>
+    </div>
+    <div 
+*ngFor="let comment of comments,let i=index"
+    class="flex mb-3">
+      <div class="h-10 w-10 rounded-full bg-red-500 overflow-hidden">
+        <img src="http://api-sales-app.josetovar.dev/pictures/{{ comment.picture }}" alt="" />
+      </div>
+      <div class="border shadow-lg rounded-lg ml-4 p-3 w-[60%]">
+          <div class="font-bold">
+              <p>{{comment.first_name}}</p>
+  
+          </div>
+          <div>
+              <p>{{postData.post.comments[i]?.content}}</p>
+  
+          </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="grid grid-cols-12 gap-2">
+    <!-- <div class="h-10 w-10 rounded-full bg-red-500 col-span-1">
+      <img src="" alt="" />
+    </div> -->
+    <div class="col-span-10">
+      <input
+      #content
+        placeholder="add a comment..."
+        class="w-full border rounded-lg shadow-lg focus:border-blue-500 p-3"
+        type="text"
+      />
+    </div>
+
+    <div class="col-span-1">
+      <button 
+      (click)="sendComments(postData.post.id)"
+      class="bg-white p-3">
+        <i class="fa-regular fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>

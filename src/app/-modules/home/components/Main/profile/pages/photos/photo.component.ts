@@ -15,6 +15,24 @@ export class photoComponent implements OnInit {
   ) {}
   public images: any[] = [];
   ngOnInit(): void {
+    this.activeRoute.params.subscribe(param=>{
+      console.log(param)
+      if(param['username1']){
+        const username = param['username1'];
+        this.service.getPost(username).subscribe({
+          next: (res) => {
+            this.images = res;
+          },
+        });
+      }
+      else{
+        this.getData();
+      }
+     
+    })
+    
+  }
+  getData(){
     this.getFunction.sendClickEvent();
     this.activeRoute.params.subscribe({
       next: (params) => {

@@ -15,4 +15,7 @@ export class postServices{
     public getPost(username:any):Observable<any>{
         return this.http.get(`${this.url}/${username}`)
     }
+    public sendComment(body:any):Observable<any>{
+        return this.http.post('https://api-sales-app.josetovar.dev/comments',body)
+    }
 }

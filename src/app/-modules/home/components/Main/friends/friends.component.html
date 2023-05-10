@@ -1,0 +1,57 @@
+<section>
+    <h2 class="text-2xl font-bold ">New requests</h2>
+<p>({{totalReq}}) new requests</p>
+    <ul >
+        <li 
+        *ngFor="let friend of friendsReq$ |async"
+        class="flex justify-between bg-white  p-3 m-3">
+            <div class="h-28 w-28 bg-red-400 rounded-full overflow-hidden">
+<img 
+class="w-full h-full"
+src="http://api-sales-app.josetovar.dev/pictures/{{ friend.sender.picture }}" alt="">
+            </div>
+            <div>
+                <p>{{friend.sender.first_name}} {{friend.sender.last_name}}</p>
+            </div>
+            <div>
+                <button 
+                (click)="acceptReq(friend.sender.username)"
+                class="bg-green-500 text-white p-3 m-3 rounded-b-lg">accept <i class="fa-solid fa-check"></i></button>
+
+            </div>
+        </li>
+    </ul>
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold">Suggestions</h2>
+        <ul class="bg-white p-3 mt-6">
+            <li
+            class="m-3  border-2 border-green-500 p-3 shadow-lg hover:bg-blue-100 rounded-lg flex justify-between"
+             *ngFor="let user of allUsers$ | async">
+                <div class="flex">
+                    <div class="h-28 w-28 bg-red-400 rounded-full overflow-hidden">
+                        <img 
+                        class="w-full h-full "
+                        src="http://api-sales-app.josetovar.dev/pictures/{{user.picture}}" alt="">
+                    </div>
+                    <div class="m-5 text-xl font-semibold">
+                        <p>{{user.first_name}} {{user.last_name}}</p>
+                    </div>
+                </div>
+                <div
+                [hidden]="user.friendship==true"
+                >
+                    <button 
+                    (click)="sendReq(user.username)"
+                    class="bg-green-400 p-3 rounded-s-lg m-3 text-white">add <i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div 
+                class="m-5 text-xl font-medium"
+                [hidden]="user.friendship==false">
+                    <p>friends</p>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+   
+</section>

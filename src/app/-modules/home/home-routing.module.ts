@@ -9,6 +9,7 @@ import { photoComponent } from './components/Main/profile/pages/photos/photo.com
 import { createPostComponent } from './components/Main/feeds/pages/createPost.component';
 import { timeLineComponent } from './components/Main/profile/pages/timeline/timeLine.component';
 import { loginQuard } from 'src/app/-core/quards/login.guard';
+import { newFriendsComponent } from './components/Main/friends/friends.component';
 
 
 const routes: Routes = [
@@ -21,17 +22,19 @@ const routes: Routes = [
         path: 'profile',
         component: profileComponent,canActivateChild:[loginQuard],
         children: [
-          {path:'timeline/:username',component:timeLineComponent},
+          {path:'timeline/:username',component:timeLineComponent,},
           {path:'new',component:createPostComponent},
           { path: 'about', component: aboutComponent },
           { path: '', redirectTo: 'about', pathMatch: 'full' },
           { path: 'friends', component: friendsComponent },
-          {path:'photos/:username',component:photoComponent}
+          {path:'photos/:username',component:photoComponent},
         ],
       },
+
       {path: '', redirectTo: 'feeds', pathMatch: 'full' },
       {path:'new',component:createPostComponent},
       { path: 'feeds', component: feedsComponent,children:[{path:'new',component:createPostComponent}] },
+      {path:'friends',component:newFriendsComponent}
       
     ],
   },

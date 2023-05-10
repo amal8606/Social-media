@@ -1,10 +1,11 @@
-<div *ngFor="let post of posts" class="bg-white p-4 m-4 rounded-md mb-3">
+<div *ngFor="let post of posts, let i=index" class="bg-white p-4 m-4 rounded-md mb-3">
+  <div class="relative">
     <div class="flex justify-between">
       <div class="flex">
         <div class="ml-3">
-          <p class="text-md text-black font-bold">{{ post.name }}</p>
+          <p class="text-md text-black font-bold">{{ post.post.name }}</p>
           <p class="text-sm text-gray-400">
-            {{ getTime(post.created_at) }}
+            {{ getTime(post.post.created_at) }}
           </p>
         </div>
       </div>
@@ -13,7 +14,7 @@
     <div class=" h-[600px] overflow-hidden mt-5 mb-3 w-full">
       <img 
       class="w-full"
-      src="https://api-sales-app.josetovar.dev/pictures/{{post.picture}}" alt="post loading..." />
+      src="https://api-sales-app.josetovar.dev/pictures/{{post.post.picture}}" alt="post loading..." />
     </div>
     <p>
       {{ post.content }}
@@ -22,8 +23,21 @@
       <button class="bg-gray-100 p-2 rounded-xl">
         <i class="fa-regular fa-thumbs-up text-blue-500 mr-2"></i> Like
       </button>
-      <button class="ml-4 bg-gray-100 p-2 rounded-xl">
+      <button 
+      (click)="showComment(i)"
+      class="ml-4 bg-gray-100 p-2 rounded-xl">
         <i class="fa-regular fa-comment text-blue-500 mr-2"></i> comment
       </button>
     </div>
+  </div>
+   
+    <div 
+    *ngIf="showComments && selectedPostIndex==i"
+    class="-mt-80 z-10 relative p-3">
+      <app-comments
+[postData]="post"
+      (newEvent)="showComments=false"
+      ></app-comments>
+    </div>
+  
   </div>

@@ -16,6 +16,8 @@ import { GuardInterceptor,  } from 'src/app/-core/interceptor/token.interceptor'
 import { updateProfileComponent } from './components/Main/profile/pages/update_profile/updateProfile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { timeLineComponent } from './components/Main/profile/pages/timeline/timeLine.component';
+import { newFriendsComponent } from './components/Main/friends/friends.component';
+import { sharedModule } from 'src/app/-shared/shared.modules';
 
 
 @NgModule({
@@ -30,13 +32,15 @@ import { timeLineComponent } from './components/Main/profile/pages/timeline/time
     friendsComponent,
     photoComponent,
     updateProfileComponent,
-    timeLineComponent
+    timeLineComponent,
+    newFriendsComponent
    
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    sharedModule
   ],
   providers:[
     { provide: HTTP_INTERCEPTORS, useClass: GuardInterceptor, multi: true },

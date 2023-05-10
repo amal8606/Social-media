@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { postServices } from 'src/app/-core/http/post.service';
+import { loadCommentsService } from 'src/app/-core/services/subjects/comments.subject';
 import { GetFunctionService } from 'src/app/-core/services/subjects/subject.service';
 
 @Component({
@@ -12,9 +14,48 @@ export class timeLineComponent implements OnInit {
     private readonly postService: postServices,
     private readonly router: Router,
     private readonly activeRoute: ActivatedRoute,
-    private readonly getFunction:GetFunctionService
+    private readonly getFunction: GetFunctionService,
+    private readonly getFunctionService: loadCommentsService
   ) {}
+  public clickEvent: Subscription = this.getFunctionService
+    .getClickEvent1()
+    .subscribe(() => {
+      if (this.username) {
+        this.getFriendData();
+      } else {
+        this.getData();
+      }
+    });
+  public showComments = false;
+  public selectedPostIndex!: number;
+  public username!: string;
   ngOnInit(): void {
+    this.activeRoute.queryParams.subscribe((params) => {
+      if (params['username1']) {
+        this.username = params['username1'];
+        this.getFriendData();
+      } else {
+        this.getData();
+      }
+    });
+  }
+
+  public posts: any = [];
+  public getFriendData() {
+    this.postService.getPost(this.username).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.posts = res;
+        this.posts.sort((a: any, b: any) => {
+          return (
+            new Date(b.post.created_at).getTime() -
+            new Date(a.post.created_at).getTime()
+          );
+        });
+      },
+    });
+  }
+  public getData() {
     this.getFunction.sendClickEvent();
     this.activeRoute.params.subscribe({
       next: (params) => {
@@ -22,16 +63,21 @@ export class timeLineComponent implements OnInit {
         this.postService.getPost(username).subscribe({
           next: (res) => {
             this.posts = res;
+            this.posts.sort((a: any, b: any) => {
+              return (
+                new Date(b.post.created_at).getTime() -
+                new Date(a.post.created_at).getTime()
+              );
+            });
           },
         });
       },
     });
   }
-  public posts: any = [];
 
-  getTime(postCreatedAt: string): string {
+  getTime(created_at: string): string {
     const now = new Date();
-    const createdDate = new Date(postCreatedAt);
+    const createdDate = new Date(created_at);
     const age = Math.round(
       (now.getTime() - createdDate.getTime()) / (1000 * 60)
     );
@@ -45,5 +91,9 @@ export class timeLineComponent implements OnInit {
     } else {
       return `${Math.round(newTime / 24)} days ago`;
     }
+  }
+  showComment(index: any) {
+    this.selectedPostIndex = index;
+    this.showComments = true;
   }
 }

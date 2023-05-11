@@ -7,7 +7,7 @@ import { Observable } from "rxjs"
 })
 export class profileServices{
     constructor( private readonly http:HttpClient){}
-    
+    public userName!:string;
     public url= 'https://api-sales-app.josetovar.dev/profile'
     public getProfile(username:string):Observable<any>{
         return this.http.get(`${this.url}/${username}`)
@@ -25,5 +25,7 @@ export class profileServices{
     public updateProfile(data:any):Observable<any>{
         return this.http.post(`${this.url}`,data)
     }
+
+
 
 }

@@ -12,15 +12,15 @@
 *ngFor="let comment of comments,let i=index"
     class="flex mb-3">
       <div class="h-10 w-10 rounded-full bg-red-500 overflow-hidden">
-        <img src="http://api-sales-app.josetovar.dev/pictures/{{ comment.picture }}" alt="" />
+        <img src="http://api-sales-app.josetovar.dev/pictures/{{ comment?.picture }}" alt="" />
       </div>
       <div class="border shadow-lg rounded-lg ml-4 p-3 w-[60%]">
           <div class="font-bold">
-              <p>{{comment.first_name}}</p>
+              <p>{{comment?.first_name}}</p>
   
           </div>
           <div>
-              <p>{{postData.post.comments[i]?.content}}</p>
+              <p>{{postData.post?.comments[i]?.content}}</p>
   
           </div>
       </div>

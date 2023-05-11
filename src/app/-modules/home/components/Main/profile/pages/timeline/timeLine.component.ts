@@ -20,41 +20,32 @@ export class timeLineComponent implements OnInit {
   public clickEvent: Subscription = this.getFunctionService
     .getClickEvent1()
     .subscribe(() => {
-      if (this.username) {
-        this.getFriendData();
-      } else {
+      
         this.getData();
-      }
+      
     });
   public showComments = false;
   public selectedPostIndex!: number;
   public username!: string;
   ngOnInit(): void {
-    this.activeRoute.queryParams.subscribe((params) => {
-      if (params['username1']) {
-        this.username = params['username1'];
-        this.getFriendData();
-      } else {
-        this.getData();
-      }
-    });
+   this.getData();
   }
 
   public posts: any = [];
-  public getFriendData() {
-    this.postService.getPost(this.username).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.posts = res;
-        this.posts.sort((a: any, b: any) => {
-          return (
-            new Date(b.post.created_at).getTime() -
-            new Date(a.post.created_at).getTime()
-          );
-        });
-      },
-    });
-  }
+  // public getFriendData() {
+  //   this.postService.getPost(this.username).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //       this.posts = res;
+  //       this.posts.sort((a: any, b: any) => {
+  //         return (
+  //           new Date(b.post.created_at).getTime() -
+  //           new Date(a.post.created_at).getTime()
+  //         );
+  //       });
+  //     },
+  //   });
+  // }
   public getData() {
     this.getFunction.sendClickEvent();
     this.activeRoute.params.subscribe({

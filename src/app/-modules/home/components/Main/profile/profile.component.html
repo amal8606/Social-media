@@ -17,7 +17,7 @@
       </div>
 
       <button
-      [hidden]="showEdit"
+      [hidden]="!showEdit"
       (click)="addPost()" title="edit" class="-ml-8 mt-16 z-20">
         <i class="fa-solid fa-camera fa-2xl text-blue-500 hover:text-green-400"></i>
       </button>
@@ -38,30 +38,34 @@
     <div class="flex justify-between text-lg font-semibold text-blue-300 mt-4 ml-36">
       <a
         routerLink="timeline/{{userData.username}}"
+        [queryParams]="{username:userData.username}"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Timeline</a
       >
       <a
         routerLink="about"
+        [queryParams]="{username:userData.username}"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >About</a
       >
       <a
         routerLink="friends"
+        [queryParams]="{username:userData.username}"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >friends</a
       >
       <a
         routerLink="photos/{{userData.username}}"
+        [queryParams]="{username:userData.username}"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Photos</a
       >
       <button
-      [hidden]="showEdit"
+      *ngIf="showEdit"
         (click)="showUpdates = true"
         title="edit profile"
         class="text-blue-500 mr-3"

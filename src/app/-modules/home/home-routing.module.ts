@@ -1,15 +1,15 @@
-import { NgModule, createComponent } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home.component';
-import { profileComponent } from './components/Main/profile/profile.component';
+import { loginQuard } from 'src/app/-core/quards/login.guard';
 import { feedsComponent } from './components/Main/feeds/feeds.component';
+import { createPostComponent } from './components/Main/feeds/pages/createPost.component';
+import { newFriendsComponent } from './components/Main/friends/friends.component';
 import { aboutComponent } from './components/Main/profile/pages/about/about.component';
 import { friendsComponent } from './components/Main/profile/pages/friends/friends.component';
 import { photoComponent } from './components/Main/profile/pages/photos/photo.component';
-import { createPostComponent } from './components/Main/feeds/pages/createPost.component';
 import { timeLineComponent } from './components/Main/profile/pages/timeline/timeLine.component';
-import { loginQuard } from 'src/app/-core/quards/login.guard';
-import { newFriendsComponent } from './components/Main/friends/friends.component';
+import { profileComponent } from './components/Main/profile/profile.component';
+import { HomeComponent } from './home.component';
 
 
 const routes: Routes = [
@@ -18,11 +18,13 @@ const routes: Routes = [
     component: HomeComponent,
     canActivateChild:[loginQuard],
     children: [
+     
       {
         path: 'profile',
         component: profileComponent,canActivateChild:[loginQuard],
         children: [
-          {path:'timeline/:username',component:timeLineComponent,},
+          {path:'friends/:username',component:profileComponent},
+          {path:'timeline/:username',component:timeLineComponent,runGuardsAndResolvers: 'paramsOrQueryParamsChange'},
           {path:'new',component:createPostComponent},
           { path: 'about', component: aboutComponent },
           { path: '', redirectTo: 'about', pathMatch: 'full' },

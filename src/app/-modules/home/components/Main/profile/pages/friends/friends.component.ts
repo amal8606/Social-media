@@ -32,7 +32,7 @@ this.activeRoute.params.subscribe(params=>{
     
 }
 public getInfo(username:string){
-    this.router.navigate(['home/profile'],{queryParams:{username},queryParamsHandling:'merge'})
+    this.router.navigate(['home/profile'],{queryParams:{username}})
 }
 
 }

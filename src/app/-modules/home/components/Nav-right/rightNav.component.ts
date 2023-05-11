@@ -29,16 +29,19 @@ export class rightNavComponent {
 
   ngOnInit(): void {
     this.getData();
+
   }
   public getData() {
     this.getProfileService.getProfilebyLogin().subscribe({
-      next: (res) => {
-        this.userData = res;
+      next: (res:any) => {
+      this.userData=res;
       },
     });
     this.friendsService.getFriendProfile().subscribe({
-      next: (res) => {
-        this.data = res
+      next: (res:any) => {
+        this.data = res.filter((obj:any,index:any,arr:any)=>{
+          return arr.findIndex((item:any)=>item.username==obj.username)===index
+        })
       },
     });
   }

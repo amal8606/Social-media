@@ -32,15 +32,17 @@ export class commentsComponents implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    console.log(this.postData)
   }
   public loadData() {
-    this.postData.comments.forEach((comment: any) => {
+    this.postData?.comments.forEach((comment: any) => {
       this.comments.push(comment);
     });
   }
   sendComments(post_id: number) {
     const content = this.content.nativeElement.value;
     const body = { post_id, content };
+    console.log(body)
     this.postService.sendComment(body).subscribe({
       next: (res) => {
         console.log(res);

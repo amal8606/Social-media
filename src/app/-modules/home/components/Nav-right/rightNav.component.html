@@ -1,12 +1,14 @@
 <div>
     <div class="flex m-4 border-b-red-500 shadow-lg shadow-blue-300 p-3 justify-between">
       <div class="flex justify-center">
+        <a routerLink="" [queryParams]="{username:userData.username}">
       <div class="w-12 h-12 rounded-full overflow-hidden">
         <img
           src="https://api-sales-app.josetovar.dev/pictures/{{userData.picture}}"
           alt="profile photo loading...."
         />
       </div>
+    </a>
 
       <p class="text-md text-black font-bold m-3">{{userData.first_name}} {{userData.last_name}}</p>
     </div>

@@ -27,7 +27,7 @@ submit(){
     if(res){
       this.toastr.showSuccess('Login successFull')
       console.log(res)
-      this.router.navigate(['/home'])
+      this.router.navigate(['feeds'])
       localStorage.setItem('access_token',JSON.stringify(res.access_token))
     }
   },

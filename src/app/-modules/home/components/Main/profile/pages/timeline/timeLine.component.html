@@ -1,4 +1,4 @@
-<div *ngFor="let post of posts, let i=index" class="bg-white p-4 m-4 rounded-md mb-3">
+<div *ngFor="let post of posts, let i=index" class="bg-white p-4 mt-3 rounded-md mb-6 shadow-2xl m-5 shadow-grey-500 border-2 border-y-black">
   <div class="relative">
     <div class="flex justify-between">
       <div class="flex">
@@ -11,7 +11,7 @@
       </div>
       <button><i class="fa-solid fa-ellipsis"></i></button>
     </div>
-    <div class=" h-[600px] overflow-hidden mt-5 mb-3 w-full">
+    <div class="overflow-hidden mt-5 mb-3 w-full">
       <img 
       class="w-full"
       src="https://api-sales-app.josetovar.dev/pictures/{{post.post.picture}}" alt="post loading..." />
@@ -26,7 +26,7 @@
       <button 
       (click)="showComment(i)"
       class="ml-4 bg-gray-100 p-2 rounded-xl">
-        <i class="fa-regular fa-comment text-blue-500 mr-2"></i> comment
+        <i class="fa-regular fa-comment text-blue-500 mr-2"></i>{{post.comments.length}} comments 
       </button>
     </div>
   </div>

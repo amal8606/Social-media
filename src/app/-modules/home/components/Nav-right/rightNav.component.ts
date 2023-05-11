@@ -35,6 +35,7 @@ export class rightNavComponent {
     this.getProfileService.getProfilebyLogin().subscribe({
       next: (res:any) => {
       this.userData=res;
+     
       },
     });
     this.friendsService.getFriendProfile().subscribe({
@@ -46,6 +47,6 @@ export class rightNavComponent {
     });
   }
   viewProfile(username:string){
-    this.router.navigate(['home/profile'],{queryParams:{username},queryParamsHandling:'merge'})
+    this.router.navigate(['timeline'],{queryParams:{username},queryParamsHandling:'merge'})
   }
 }

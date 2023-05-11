@@ -18,25 +18,24 @@ const routes: Routes = [
     component: HomeComponent,
     canActivateChild:[loginQuard],
     children: [
-     
+      { path: 'feeds', component: feedsComponent,children:[{path:'new',component:createPostComponent}] },
       {
-        path: 'profile',
+        path: '',
         component: profileComponent,canActivateChild:[loginQuard],
         children: [
-          {path:'friends/:username',component:profileComponent},
-          {path:'timeline/:username',component:timeLineComponent,runGuardsAndResolvers: 'paramsOrQueryParamsChange'},
+          {path:'timeline',component:timeLineComponent,runGuardsAndResolvers: 'paramsOrQueryParamsChange'},
           {path:'new',component:createPostComponent},
           { path: 'about', component: aboutComponent },
-          { path: '', redirectTo: 'about', pathMatch: 'full' },
+          { path: '', redirectTo: 'timeline', pathMatch: 'full' },
           { path: 'friends', component: friendsComponent },
-          {path:'photos/:username',component:photoComponent},
+          {path:'photos',component:photoComponent},
         ],
       },
 
-      {path: '', redirectTo: 'feeds', pathMatch: 'full' },
+      {path: '',component:feedsComponent },
       {path:'new',component:createPostComponent},
-      { path: 'feeds', component: feedsComponent,children:[{path:'new',component:createPostComponent}] },
-      {path:'friends',component:newFriendsComponent}
+     
+      {path:'friends-req',component:newFriendsComponent}
       
     ],
   },

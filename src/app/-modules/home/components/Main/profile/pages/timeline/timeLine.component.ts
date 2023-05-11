@@ -32,23 +32,10 @@ export class timeLineComponent implements OnInit {
   }
 
   public posts: any = [];
-  // public getFriendData() {
-  //   this.postService.getPost(this.username).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.posts = res;
-  //       this.posts.sort((a: any, b: any) => {
-  //         return (
-  //           new Date(b.post.created_at).getTime() -
-  //           new Date(a.post.created_at).getTime()
-  //         );
-  //       });
-  //     },
-  //   });
-  // }
+
   public getData() {
     this.getFunction.sendClickEvent();
-    this.activeRoute.params.subscribe({
+    this.activeRoute.queryParams.subscribe({
       next: (params) => {
         const username = params['username'];
         this.postService.getPost(username).subscribe({

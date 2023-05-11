@@ -19,7 +19,7 @@ export class commentsComponents implements OnInit {
   constructor(
     private readonly postService: postServices,
     @Inject(loadCommentsService)
-    private readonly getFunSevice: loadCommentsService
+    private readonly getFunSevice: loadCommentsService,
   ) {}
   public comments: any[] = [];
   @Input() postData!: any;
@@ -32,11 +32,11 @@ export class commentsComponents implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    console.log(this.postData)
   }
   public loadData() {
     this.postData?.comments.forEach((comment: any) => {
       this.comments.push(comment);
+      console.log(this.comments)
     });
   }
   sendComments(post_id: number) {
@@ -44,8 +44,7 @@ export class commentsComponents implements OnInit {
     const body = { post_id, content };
     console.log(body)
     this.postService.sendComment(body).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: () => {
         this.getFunSevice.sendClickEvent1();
         this.loadData();
       },

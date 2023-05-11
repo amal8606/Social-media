@@ -16,11 +16,17 @@
         />
       </div>
 
-      <button
-      [hidden]="!showEdit"
-      (click)="addPost()" title="edit" class="-ml-8 mt-16 z-20">
-        <i class="fa-solid fa-camera fa-2xl text-blue-500 hover:text-green-400"></i>
-      </button>
+      <a
+        [hidden]="!showEdit"
+        routerLink="new"
+        [queryParams]="{ post: 'profile_pic' }"
+        title="edit"
+        class="-ml-8 mt-28 z-20"
+      >
+        <i
+          class="fa-solid fa-camera fa-2xl text-blue-500 hover:text-green-400"
+        ></i>
+      </a>
 
       <p class="text-2xl text-white font-serif m-3">
         {{ userData.first_name }} {{ userData.last_name }}
@@ -35,37 +41,40 @@
     </div>
   </div>
   <div class="-mt-28 bg-white overflow-y-auto pl-10 relative">
-    <div class="flex justify-between text-lg font-semibold text-blue-300 mt-4 ml-36">
+    <div
+      class="flex justify-between text-lg font-semibold text-blue-300 mt-4 ml-36"
+    >
       <a
-        routerLink="timeline/{{userData.username}}"
-        [queryParams]="{username:userData.username}"
+        routerLink="timeline"
+        [queryParams]="{ username: userData.username }"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Timeline</a
       >
       <a
         routerLink="about"
-        [queryParams]="{username:userData.username}"
+        [queryParams]="{ username: userData.username }"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >About</a
       >
       <a
+      *ngIf="showEdit"
         routerLink="friends"
-        [queryParams]="{username:userData.username}"
+        [queryParams]="{ username: userData.username }"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >friends</a
       >
       <a
-        routerLink="photos/{{userData.username}}"
-        [queryParams]="{username:userData.username}"
+        routerLink="photos"
+        [queryParams]="{ username: userData.username }"
         routerLinkActive="border-b-blue-500 text-blue-700"
         class="border-4 border-transparent hover:border-b-blue-500 p-6"
         >Photos</a
       >
       <button
-      *ngIf="showEdit"
+        *ngIf="showEdit"
         (click)="showUpdates = true"
         title="edit profile"
         class="text-blue-500 mr-3"

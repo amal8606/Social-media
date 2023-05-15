@@ -1,10 +1,10 @@
-<div class="w-full h-96 bg-white p-5 rounded-lg grid border-t-2 border-x-2 border-black">
+<div class="w-full h-96 bg-white p-5 rounded-lg grid border-t-4 border-x-4 border-purple-600">
   <div class="right-0">
     <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="h-60 overflow-y-auto">
     <div 
-    *ngIf="comments.length==0"
+    *ngIf="postData.comments.length==0"
     class="text-center">
         <p>No comments yet...</p>
     </div>
@@ -12,9 +12,11 @@
 *ngFor="let comment of postData.comments,let i=index"
     class="flex mb-3">
       <div class="h-10 w-10 rounded-full bg-red-500 overflow-hidden">
-        <img src="http://api-sales-app.josetovar.dev/pictures/{{ comment?.picture }}" alt="" />
+        <img 
+        class="h-full w-full"
+        src="http://api-sales-app.josetovar.dev/pictures/{{ comment?.picture }}" alt="" />
       </div>
-      <div class="border shadow-lg rounded-lg ml-4 p-3 w-[60%] border-blue-500">
+      <div class="border shadow-lg rounded-lg ml-4 p-3 w-[60%] border-blue-500 shadow-gray-500">
           <div class="font-bold">
               <p>{{comment?.first_name}}</p>
   
@@ -28,9 +30,7 @@
   </div>
  
   <div class="grid grid-cols-12 gap-2">
-    <!-- <div class="h-10 w-10 rounded-full bg-red-500 col-span-1">
-      <img src="" alt="" />
-    </div> -->
+   
     <div class="col-span-10">
       <input
       #content
@@ -41,7 +41,8 @@
     </div>
 
     <div class="col-span-1">
-      <button 
+      <button
+      
       (click)="sendComments(postData.post.id)"
       class="bg-white p-3">
         <i class="fa-regular fa-paper-plane"></i>

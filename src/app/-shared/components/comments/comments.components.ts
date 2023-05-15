@@ -34,10 +34,11 @@ export class commentsComponents implements OnInit {
     this.loadData();
   }
   public loadData() {
-    this.postData?.comments.forEach((comment: any) => {
-      this.comments.push(comment);
-      console.log(this.comments)
-    });
+    // this.postData?.comments.forEach((comment: any) => {
+    //   this.comments.push(comment);
+    //   console.log(this.comments)
+    // });
+    console.log(this.postData)
   }
   sendComments(post_id: number) {
     const content = this.content.nativeElement.value;

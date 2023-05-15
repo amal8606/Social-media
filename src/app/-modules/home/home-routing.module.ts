@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loginQuard } from 'src/app/-core/quards/login.guard';
 import { feedsComponent } from './components/Main/feeds/feeds.component';
-import { createPostComponent } from './components/Main/feeds/pages/createPost.component';
 import { newFriendsComponent } from './components/Main/friends/friends.component';
 import { aboutComponent } from './components/Main/profile/pages/about/about.component';
 import { friendsComponent } from './components/Main/profile/pages/friends/friends.component';
@@ -18,13 +17,13 @@ const routes: Routes = [
     component: HomeComponent,
     canActivateChild:[loginQuard],
     children: [
-      { path: 'feeds', component: feedsComponent,children:[{path:'new',component:createPostComponent}] },
+      { path: 'feeds', component: feedsComponent},
       {
         path: '',
         component: profileComponent,canActivateChild:[loginQuard],
         children: [
           {path:'timeline',component:timeLineComponent,runGuardsAndResolvers: 'paramsOrQueryParamsChange'},
-          {path:'new',component:createPostComponent},
+          
           { path: 'about', component: aboutComponent },
           { path: '', redirectTo: 'timeline', pathMatch: 'full' },
           { path: 'friends', component: friendsComponent },
@@ -33,7 +32,7 @@ const routes: Routes = [
       },
 
       {path: '',component:feedsComponent },
-      {path:'new',component:createPostComponent},
+      
      
       {path:'friends-req',component:newFriendsComponent}
       

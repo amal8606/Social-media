@@ -40,6 +40,7 @@ export class timeLineComponent implements OnInit {
         const username = params['username'];
         this.postService.getPost(username).subscribe({
           next: (res) => {
+            console.log(res)
             this.posts = res;
             this.posts.sort((a: any, b: any) => {
               return (

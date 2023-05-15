@@ -3,7 +3,7 @@
     <div class="flex justify-between">
       <p class="text-gray-400">Sharing options</p>
       <a
-      (click)="addPost()"
+      (click)="addNewPost=true"
       ><i class="fa-solid fa-images fa-lg text-blue-500"></i></a>
     </div>
   </div>
@@ -11,7 +11,7 @@
   <ng-container *ngFor="let post of allPosts,let i=index">
   <div
   *ngFor="let item of post?.posts,let j=index"
-  class="bg-white p-4 mt-3 rounded-md mb-6 shadow-2xl m-5 shadow-grey-500 border-2 border-y-black">
+  class="bg-white p-4 mt-3 rounded-md mb-6 shadow-2xl m-5 shadow-grey-500 border-8 border-y-black">
     <div class="flex justify-between">
       <div class="flex">
         <div class="w-12 h-12 rounded-full overflow-hidden ml-6 mr-6">
@@ -20,7 +20,9 @@
           src="http://api-sales-app.josetovar.dev/pictures/{{ post.friend?.picture}}" alt="profile photo" />
         </div>
         <div class="ml-3">
-          <p class="text-md text-black font-bold">{{ post.friend?.first_name}} {{ post.friend?.last_name}}</p>
+          <a routerLink="" [queryParams]="{username:post.friend?.username}">
+          <p class="text-md text-black font-bold hover:text-blue-400">{{ post.friend?.first_name}} {{ post.friend?.last_name}}</p>
+        </a>
           <p class="text-sm text-gray-400">
          {{getTime(item?.post.created_at)}}
           </p>
@@ -56,4 +58,8 @@
     </div>
   </div>
 </ng-container>
-  <router-outlet></router-outlet>
+
+<app-create
+*ngIf="addNewPost"
+(close)="addNewPost=false"
+></app-create>

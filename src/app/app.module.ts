@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { accessServices } from './-core/http/aceess.services';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { profileServices } from './-core/http/profile.services';
-import { createPostComponent } from './-modules/home/components/Main/feeds/pages/createPost.component';
 import { GuardInterceptor } from './-core/interceptor/token.interceptor';
 import { GetFunctionService } from './-core/services/subjects/subject.service';
 import { postServices } from './-core/http/post.service';
@@ -19,7 +18,7 @@ import { loginQuard } from './-core/quards/login.guard';
 import { loadCommentsService } from './-core/services/subjects/comments.subject';
 
 @NgModule({
-  declarations: [AppComponent,createPostComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

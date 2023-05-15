@@ -26,6 +26,7 @@ export class feedsComponent implements OnInit {
   public uniqueUsername: any[] = [];
   public showComments = false;
   public selectedPostIndex!: number;
+  public addNewPost=false;
 
   ngOnInit(): void {
     this.loadData();
@@ -54,7 +55,7 @@ export class feedsComponent implements OnInit {
         const posts = res;
         const post = { friend, posts };
         this.allPosts.push(post);
-        console.log(this.allPosts);
+  
       },
     });
   }
@@ -77,7 +78,7 @@ export class feedsComponent implements OnInit {
     }
   }
   public addPost() {
-    this.router.navigate(['home/feeds/new'], { queryParams: { post: 'new' } });
+    this.router.navigate(['new'], { queryParams: { post: 'new' } });
   }
   showComment(index: any) {
     this.selectedPostIndex = index;

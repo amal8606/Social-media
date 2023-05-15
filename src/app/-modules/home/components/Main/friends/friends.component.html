@@ -11,7 +11,9 @@ class="w-full h-full"
 src="http://api-sales-app.josetovar.dev/pictures/{{ friend.sender.picture }}" alt="">
             </div>
             <div>
+                <a routerLink="" [queryParams]="{username:friend.sender.username}">
                 <p>{{friend.sender.first_name}} {{friend.sender.last_name}}</p>
+            </a>
             </div>
             <div>
                 <button 
@@ -34,7 +36,9 @@ src="http://api-sales-app.josetovar.dev/pictures/{{ friend.sender.picture }}" al
                         src="http://api-sales-app.josetovar.dev/pictures/{{user.picture}}" alt="">
                     </div>
                     <div class="m-5 text-xl font-semibold">
+                        <a routerLink="" [queryParams]="{username:user.username}">
                         <p>{{user.first_name}} {{user.last_name}}</p>
+                    </a>
                     </div>
                 </div>
                 <div

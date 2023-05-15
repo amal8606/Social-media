@@ -2,7 +2,7 @@
   <div class="bg-red-300 h-96 w-full">
     <img
       class="h-full w-full"
-      src="https://container-news.com/wp-content/uploads/2021/04/Picture-1.jpg"
+      [src]="propic"
       alt=""
     />
   </div>
@@ -18,8 +18,7 @@
 
       <a
         [hidden]="!showEdit"
-        routerLink="new"
-        [queryParams]="{ post: 'profile_pic' }"
+       (click)="addNewPost=true"
         title="edit"
         class="-ml-8 mt-28 z-20"
       >
@@ -90,4 +89,8 @@
 </section>
 <section class="mt-6">
   <router-outlet></router-outlet>
+  <app-create
+  *ngIf="addNewPost"
+  (close)="addNewPost=false"
+  ></app-create>
 </section>

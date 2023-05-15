@@ -9,10 +9,11 @@ import {
 } from '@angular/common/http';
 
 import { Observable, catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class GuardInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private router:Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -33,15 +34,18 @@ export class GuardInterceptor implements HttpInterceptor {
       return next.handle(authReq).pipe(catchError(this.handleErrors));
     } else {
       return next.handle(request);
+      
     }
   }
 
   handleErrors(error: HttpErrorResponse) {
     switch (error.status) {
       case 401:
+
         return throwError(() => new Error('Not authorized'));
 
       default:
+
         return throwError(() => new Error('Error!'));
     }
   }

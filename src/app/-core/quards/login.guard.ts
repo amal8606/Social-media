@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 
 @Injectable({
@@ -12,18 +11,21 @@ export class loginQuard implements CanActivate, CanActivateChild{
 
     }
     get(){
-        if(this.authService.isAccessTokenExpired()==false){
-            this.router.navigate(['/login'])
-        return false
-        }
-        else{
-            return true
-        }
+        this.authService.isAccessTokenExpired().subscribe(res=>{
+            if(res==false){
+                this.router.navigate(['login']);
+                return false;
+            }
+            else{
+                return true;
+            }
+        })
+ 
     }
-canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-return this.get();
-}
-canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-   return this.get();
-}
+    canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): any {
+        this.get();
+   }
+   canActivateChild(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): any {
+    this.get();
+  }
 }

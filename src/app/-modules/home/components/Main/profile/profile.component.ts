@@ -20,6 +20,7 @@ export class profileComponent implements OnInit {
   public showEdit = true;
   public userData: any = [];
   public showUpdates = false;
+  public addNewPost=false;
   public clickEventFuction: Subscription = this.sendFunction
     .getClickEvent()
     .subscribe(() => {
@@ -29,6 +30,11 @@ export class profileComponent implements OnInit {
     });
   public username!: string;
   ngOnInit(): void {
+    const access_token=localStorage.getItem('access_token')
+    if(!access_token){
+      console.log('no access..')
+      this.router.navigate(['login']);
+    }else
     this.activeRoute.queryParams.subscribe((params) => {
       const username = params['username'];
 

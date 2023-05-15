@@ -1,5 +1,4 @@
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, Inject, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { postServices } from 'src/app/-core/http/post.service';
 import { profileServices } from 'src/app/-core/http/profile.services';
@@ -22,6 +21,8 @@ export class createPostComponent {
   ) {}
 
   @ViewChild('content') content!: ElementRef;
+  @Output() close=new EventEmitter();
+
   public showImg = false;
   public selectedFile!: File;
   public imgPrev!: string;
@@ -36,32 +37,14 @@ export class createPostComponent {
   }
   public createPost() {
     this.activeRoute.queryParams.subscribe((params) => {
-      if (params['post'] == 'new') {
-
-        const content = this.content.nativeElement.value;
-        const formData: FormData = new FormData();
-        formData.append('content', content);
-        formData.append('file', this.selectedFile, this.selectedFile.name);
-
-        this.postImage.newPost(formData).subscribe({
-          next: (res) => {
-            console.log(res);
-        this.router.navigate(['/home/feeds/']);
-        this.toastr.showSuccess('new post added successfully...')
-
-          },
-          error:()=>{
-            this.toastr.showError('something went wrong please try again later')
-          }
-        });
-      } else {
+      if (params['username']) {
         this.uplpoadPorfile.postPic(this.selectedFile).subscribe({
           next: (res) => {
             if (res) {
               this.toastr.showSuccess(
                 'profile picture updadated successfully..'
               );
-              this.router.navigate(['/home/profile']);
+              this.close.emit();
               this.getFunction.sendClickEvent();
             }
           },
@@ -70,6 +53,27 @@ export class createPostComponent {
           },
         });
       }
-    });
+       else {
+        const content = this.content.nativeElement.value;
+        const formData: FormData = new FormData();
+        formData.append('content', content);
+        formData.append('file', this.selectedFile, this.selectedFile.name);
+
+        this.postImage.newPost(formData).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.close.emit();
+        this.toastr.showSuccess('new post added successfully...')
+
+          },
+          error:()=>{
+            this.toastr.showError('something went wrong please try again later')
+          }
+        });
+ 
+    }});
+  }
+  public closeModal(){
+    this.close.emit()
   }
 }

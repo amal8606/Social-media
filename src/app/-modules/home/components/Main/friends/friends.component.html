@@ -1,10 +1,10 @@
-<section>
+<section class="">
     <h2 class="text-2xl font-bold ">New requests</h2>
 <p>({{totalReq}}) new requests</p>
     <ul >
         <li 
         *ngFor="let friend of friendsReq$ |async"
-        class="flex justify-between bg-white  p-3 m-3">
+        class="flex justify-between bg-white  p-3 m-3 dark:bg-gray-500">
             <div class="h-28 w-28 bg-red-400 rounded-full overflow-hidden">
 <img 
 class="w-full h-full"
@@ -25,7 +25,7 @@ src="http://api-sales-app.josetovar.dev/pictures/{{ friend.sender.picture }}" al
     </ul>
     <div class="mt-8">
         <h2 class="text-2xl font-bold">Suggestions</h2>
-        <ul class="bg-white p-3 mt-6">
+        <ul class="bg-white p-3 mt-6 dark:bg-black">
             <li
             class="m-3  border-2 border-green-500 p-3 shadow-lg hover:bg-blue-100 rounded-lg flex justify-between"
              *ngFor="let user of allUsers$ | async">
@@ -35,7 +35,7 @@ src="http://api-sales-app.josetovar.dev/pictures/{{ friend.sender.picture }}" al
                         class="w-full h-full "
                         src="http://api-sales-app.josetovar.dev/pictures/{{user.picture}}" alt="">
                     </div>
-                    <div class="m-5 text-xl font-semibold">
+                    <div class="m-5 text-xl font-semibold dark:text-white">
                         <a routerLink="" [queryParams]="{username:user.username}">
                         <p>{{user.first_name}} {{user.last_name}}</p>
                     </a>

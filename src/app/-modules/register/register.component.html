@@ -1,14 +1,14 @@
 <section
-  class="bg-white/80 h-screen top-0 bottom-0 left-0 right-0 fixed flex justify-center items-start overflow-auto"
+  class="bg-white/80 h-screen top-0 bottom-0 left-0 right-0 fixed flex justify-center items-start overflow-auto dark:bg-black/50"
 >
-  <div class="bg-white w-[440px] p-4 mt-14 shadow-lg">
+  <div class="bg-white w-[440px] p-4 mt-14 shadow-lg dark:bg-black">
     <div class="flex justify-between border-b-2 p-2 mb-3">
       <div>
-        <h2 class="text-3xl font-bold">Sign Up</h2>
+        <h2 class="text-3xl font-bold dark:text-gray-500">Sign Up</h2>
         <p class="text-sm text-gray-400">it's quick and easy.</p>
       </div>
 
-      <a routerLink="../"><i class="fa-solid fa-xmark fa-lg"></i></a>
+      <a routerLink="../"><i class="fa-solid fa-xmark fa-lg dark:text-gray-500"></i></a>
     </div>
     <form
     [formGroup]="registerForm"

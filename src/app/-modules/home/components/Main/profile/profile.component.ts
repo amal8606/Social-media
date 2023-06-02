@@ -21,6 +21,7 @@ export class profileComponent implements OnInit {
   public userData: any = [];
   public showUpdates = false;
   public addNewPost=false;
+  public dark=localStorage.getItem('dark');
   public clickEventFuction: Subscription = this.sendFunction
     .getClickEvent()
     .subscribe(() => {

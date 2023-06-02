@@ -11,12 +11,19 @@
       </div>
     </a>
 
-      <p class="text-md text-black font-bold m-3">{{userData.first_name}} {{userData.last_name}}</p>
+      <p class="text-md text-black font-bold m-3 dark:text-gray-400">{{userData.first_name}} {{userData.last_name}}</p>
     </div>
       <button class="right-0"><i class="fa-solid fa-bars fa-lg"></i></button>
+      <button
+      title="dark/light theme"
+      (click)=toggleDarkMode()
+      class="p-3 border-2 rounded-md border-transparent hover:border-black"
+    >
+    <i class="fa-solid fa-circle-half-stroke dark:text-gray-300"></i>
+    </button>
     </div>
     <div class="flex justify-between p-3">
-      <p class="font-bold">friends</p>
+      <p class="font-bold dark:text-gray-400">friends</p>
       <button *ngIf="!searchFriend" (click)="searchFriend = true">
         <i class="fa-solid fa-magnifying-glass text-blue-500 border border-transparent hover:border-b-purple-500 hover:border-l-purple-500 p-2 rounded-full"></i>
       </button>
@@ -45,7 +52,7 @@
               </a>
              
             </div>
-            <p class="text-md text-black font-bold m-3">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="text-md text-black font-bold m-3 dark:text-gray-400">{{ user.first_name }} {{ user.last_name }}</p>
           </div>
 
           <div

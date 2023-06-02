@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { accessServices } from 'src/app/-core/http/aceess.services';
+import { darkModeService } from 'src/app/-core/services/darkmode.service';
 import { toastrService } from 'src/app/-core/services/toastr.services';
 
 @Component({
@@ -11,10 +12,12 @@ import { toastrService } from 'src/app/-core/services/toastr.services';
 export class LoginComponent {
 constructor(private readonly apiService:accessServices,
   private readonly toastr:toastrService,
-  private readonly router:Router
+  private readonly router:Router,
+  private readonly darkMode:darkModeService
   ){}
 public emailRequired=false;
 public passwordRequired=false;
+public dark:boolean=false;
 
 public loginForm:FormGroup=new FormGroup({
   email:new FormControl('',Validators.required),
@@ -36,5 +39,8 @@ submit(){
   }
  })
 
+}
+toggleDarkMode():void{
+  this.darkMode.toggleDarkMode();
 }
 }

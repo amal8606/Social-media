@@ -1,11 +1,11 @@
-<div class="w-full h-96 bg-white p-5 rounded-lg grid border-t-4 border-x-4 border-purple-600">
-  <div class="right-0">
+<div class="w-full h-96 bg-white p-5 rounded-lg grid border-t-4 border-x-4 border-purple-600 dark:bg-black">
+  <div class="right-0 dark:text-gray-400">
     <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="h-60 overflow-y-auto">
     <div 
     *ngIf="postData.comments.length==0"
-    class="text-center">
+    class="text-center dark:text-blue-700">
         <p>No comments yet...</p>
     </div>
     <div 
@@ -17,11 +17,11 @@
         src="http://api-sales-app.josetovar.dev/pictures/{{ comment?.picture }}" alt="" />
       </div>
       <div class="border shadow-lg rounded-lg ml-4 p-3 w-[60%] border-blue-500 shadow-gray-500">
-          <div class="font-bold">
+          <div class="font-bold dark:text-gray-400">
               <p>{{comment?.first_name}}</p>
   
           </div>
-          <div>
+          <div class="dark:text-gray-300">
               <p>{{postData.post?.comments[i]?.content}}</p>
   
           </div>
@@ -35,7 +35,7 @@
       <input
       #content
         placeholder="add a comment..."
-        class="w-full border rounded-lg shadow-lg focus:border-blue-500 p-3"
+        class="w-full border rounded-lg shadow-lg focus:border-blue-500 p-3 dark:bg-gray-100"
         type="text"
       />
     </div>
@@ -44,7 +44,7 @@
       <button
       
       (click)="sendComments(postData.post.id)"
-      class="bg-white p-3">
+      class="bg-white p-3 dark:bg-gray-500">
         <i class="fa-regular fa-paper-plane"></i>
       </button>
     </div>

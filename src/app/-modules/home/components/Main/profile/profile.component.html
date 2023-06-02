@@ -1,4 +1,6 @@
-<section class="border-2 shadow-md grid">
+<section
+[ngClass]="{'dark':dark}"
+class="border-2 shadow-md grid">
   <div class="bg-red-300 h-96 w-full">
     <img
       class="h-full w-full"
@@ -39,7 +41,7 @@
       </button>
     </div>
   </div>
-  <div class="-mt-28 bg-white overflow-y-auto pl-10 relative">
+  <div class="-mt-28 bg-white overflow-y-auto pl-10 relative dark:bg-slate-700">
     <div
       class="flex justify-between text-lg font-semibold text-blue-300 mt-4 ml-36"
     >

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { friendsService } from 'src/app/-core/http/friends.services';
 import { profileServices } from 'src/app/-core/http/profile.services';
+import { darkModeService } from 'src/app/-core/services/darkmode.service';
 import { GetFunctionService } from 'src/app/-core/services/subjects/subject.service';
 import { userServices } from 'src/app/-core/services/user.service';
 
@@ -16,11 +17,15 @@ export class rightNavComponent {
     private readonly getProfileService: profileServices,
     private readonly getFunction: GetFunctionService,
     private readonly friendsService: friendsService,
-    private readonly router:Router
+    private readonly router:Router,
+    private readonly darkService:darkModeService
   ) {}
   public searchFriend: boolean = false;
   public data: any = [];
   public userData: any = [];
+  public dark=false;
+  public theme=localStorage.getItem('dark')
+
   public clickEvent: Subscription = this.getFunction
     .getClickEvent()
     .subscribe(() => {
@@ -49,4 +54,11 @@ export class rightNavComponent {
   viewProfile(username:string){
     this.router.navigate(['timeline'],{queryParams:{username},queryParamsHandling:'merge'})
   }
+  public toggleLogin(){
+    localStorage.clear();
+}
+toggleDarkMode():void{
+ this.darkService.toggleDarkMode();
+  }
+  
 }

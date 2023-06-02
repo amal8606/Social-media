@@ -7,6 +7,7 @@ import { profileServices } from 'src/app/-core/http/profile.services';
 export class navBarComponent implements OnInit{
     constructor(private readonly getProfileService:profileServices){}
     public data:any=[];
+    public dark=false;
     ngOnInit(): void {
       this.getProfileService.getProfilebyLogin().subscribe({
 next:(res)=>{
@@ -14,5 +15,9 @@ next:(res)=>{
 }
       })
     }
+    public toggleLogin(){
+        localStorage.clear();
+    }
+
     
 }

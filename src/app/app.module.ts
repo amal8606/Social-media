@@ -16,6 +16,7 @@ import { postServices } from './-core/http/post.service';
 import { AuthService } from './-core/services/auth.service';
 import { loginQuard } from './-core/quards/login.guard';
 import { loadCommentsService } from './-core/services/subjects/comments.subject';
+import { darkModeService } from './-core/services/darkmode.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { loadCommentsService } from './-core/services/subjects/comments.subject'
   ],
   providers: [
     userServices,
+    darkModeService,
     toastrService,
     accessServices,
     profileServices,
